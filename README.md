@@ -10,7 +10,7 @@ The aim of our project is to discover which countries contribute more to global 
     
 - Which segment causes the most pollution? 
     
-- Regression
+- Regression analysis
 
 ## Contents
 - Methane_final.csv.
@@ -41,7 +41,11 @@ Focus your efforts within a specific industry:
 1. Check for copyright protections, and make sure that the way you plan to use this dataset is within the bounds of fair use. 
 - Data is from kaggle and it provides the source: International Energy Agency
 2. Document how you intend to use this dataset now and in the future. Find any licenses or terms of use associated with the dataset, and review them to confirm that your intended use is in compliance.
+- License: Attribution 4.0 International (CC BY 4.0)
+- The objective of the project is to show how countries contribute to global pollution.
 3. Investigate how the dataset was collected. Identify any indicators that the data was obtained from a source that the compilers were not authorized to access.
+- Consists of merging list with coordinates with kaggle csv to clean the data and add more information to create the visualization, merge with perimeter of country for graph.
+- The source was authorized by the presented license.
 
 ## Data Cleanup and Analysis
 - Jupyter Notebook
