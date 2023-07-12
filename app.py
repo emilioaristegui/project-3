@@ -5,7 +5,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 
 #################################################
@@ -38,8 +38,12 @@ def return_data():
 
 @app.route('/')
 def welcome():
-    return(
-        f"Weclome to the CO2 Global Pollution API!<br/>"
-        f"<br/>"
-        f"Please find below all the available Routes:<br/>"
-    )
+    return render_template('index.html')
+    #return(
+        #f"Weclome to the CO2 Global Pollution API!<br/>"
+        #f"<br/>"
+        #f"Please find below all the available Routes:<br/>"
+    #)
+
+if __name__ == '__main__':
+    app.run(debug=False)
