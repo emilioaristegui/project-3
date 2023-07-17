@@ -13,10 +13,16 @@ The aim of our project is to discover which countries contribute more to global 
 - Regression analysis
 
 ## Contents
-- Methane_final.csv.
-- average-latitude-longitude-countries.csv.
-- paises_2013_geom_10.csv
-- project_3.ipynb.
+- /API/dev/project_3.ipynb.
+- /API/static/groupby.json.
+- /API/static/logic.js.
+- /API/static/merged.json.
+- /API/static/style.css
+- /data/Data.sql.
+- /data/Methane_final.csv.
+- /data/average-latitude-longitude-countries.csv.
+- /data/merged_df.csv
+- .DS_store
 - README.md: This file, providing an overview of the project and instructions for usage.
 
 ## Initial Requirements
