@@ -1,5 +1,5 @@
 # Project-3
-Global Emissions
+CO2 Emissions Around the World
 
 ## Background
 The aim of our project is to discover which countries contribute more to global pollution. We will analyze which industries contribute more and which segments contribute the most. Finally we will plot a regression analysis for overall global pollution for the next 5 years.
