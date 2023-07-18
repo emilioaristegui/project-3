@@ -8,6 +8,7 @@ import sqlalchemy
 from sqlalchemy import create_engine, func
 from flask import Flask, render_template
 import json
+from PIL import Image
 #import plotly.express as px
 
 
@@ -19,7 +20,7 @@ import json
 # Create database connection
 
 #connection_string= 'postgresql+psycopg2://postgres:1102@localhost:5433/Data'
-connection_string= 'postgresql+psycopg2://postgres:1102@localhost:5433/Data'
+connection_string= 'postgresql+psycopg2://postgres:1234@localhost:5432/project_3'
 engine = create_engine(connection_string)
 
 #################################################
@@ -109,6 +110,23 @@ def industry_emissions():
     df = df.groupby("industry")["emissions"].sum()
     df = df.to_json(orient="split")
     return df
+
+@app.route('/foto')
+def foto():    
+    # Read image
+    img = Image.open('API/Olorin.jpg')
+ 
+    # Output Images
+    img.show()
+ 
+    # prints format of image
+    print(img.format)
+ 
+    # prints mode of image
+    print(img.mode)
+    
+    return ('Si funciono')
+
 
 if __name__ == '__main__':
     app.run(debug=False)
