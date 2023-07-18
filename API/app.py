@@ -19,7 +19,7 @@ import json
 # Create database connection
 
 #connection_string= 'postgresql+psycopg2://postgres:1102@localhost:5433/Data'
-connection_string= 'postgresql+psycopg2://postgres:postgres@localhost:5433/co2_database'
+connection_string= 'postgresql+psycopg2://postgres:1102@localhost:5433/Data'
 engine = create_engine(connection_string)
 
 #################################################
@@ -38,7 +38,7 @@ def welcome():
     return render_template('index.html')
 
 # pd.readsql route
-@app.route('/data')
+@app.route('/data_emissions')
 def return_data(): 
     
     #reading SQL database, creating a pandas df for easier manipulation
@@ -58,12 +58,14 @@ def return_data():
     }
     df = pd.DataFrame(results, columns = ['region', 'country','emissions','industry','segment','reason','baseYear','ISO','Lat','Lon'])
     #pandas df converted into json file
-    df.to_json('static/merged.json')
-    return results
+    df = df.groupby("region")["emissions"].sum()
+    df = df.to_json(orient="split")
+    return df
 
-@app.route('/prueba')
-def return_data2(): 
+@app.route('/country_emissions')
+def country_emissions(): 
     
+    #reading SQL database, creating a pandas df for easier manipulation
     results = pd.read_sql('select * from merged', engine)
     results = {
         'country': results['country'].to_list(),
@@ -79,9 +81,10 @@ def return_data2():
         
     }
     df = pd.DataFrame(results, columns = ['region', 'country','emissions','industry','segment','reason','baseYear','ISO','Lat','Lon'])
-    year = df.groupby(["country"])["industry"].count()
-    year.to_json('static/groupby.json')
-    return results
+    #pandas df converted into json file
+    df = df.groupby("country")["emissions"].sum()
+    df = df.to_json(orient="split")
+    return df
 
 if __name__ == '__main__':
     app.run(debug=False)

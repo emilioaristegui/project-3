@@ -4,37 +4,72 @@
 
 // Aquí estoy seguro de que algo está mal, porque se genera un bucle infinito y no carga el plot
 // hbaría que revisar si el url está bien o algo...
-d3.json('http://127.0.0.1:5000/data').then(d=>{
-    let trace1={
-        x:d.region,
-        y:d.emissions,
+d3.json('http://127.0.0.1:5000/data_emissions').then(d=>{
+d3.select("#selectregion")
+.selectAll("option")
+.data(d.index)
+.enter()
+.append("option") 
+.attr("value", d=>d)
+.text(d=>d)  
+let trace1={
+        x:d.index,
+        y:d.data,
         type:'bar'
     }
     let data = [trace1]
-    
-    Plotly.newPlot('plot', data)
-    let trace2={
-        x:d.country,
-        y:d.emissions,
-        type:'bar'
-    }
-    let data2 = [trace2]
 
-    Plotly.newPlot('plot2', data2)
+    Plotly.newPlot('plot1', data)
+    d3.selectAll("#selectregion").on("change", updatePlotly);
+    function updatePlotly() {
+        // Use D3 to select the dropdown menu
+        let dropdownMenu = d3.select("#selectregion");
+        // Assign the value of the dropdown menu option to a variable
+        let dataset = dropdownMenu.property("value");
+        if (dataset == "global"){
+            Plotly.restyle("plot1", "x", [d.index]);
+            Plotly.restyle("plot1", "y", [d.data]); 
+        }else{let index = d.index.indexOf(dataset)
+            let x = [d.index[index]];
+            let y = [d.data[index]];
+            
+            // Note the extra brackets around 'x' and 'y'
+            Plotly.restyle("plot1", "x", [x]);
+            Plotly.restyle("plot1", "y", [y]);}
+        } 
 })
 
-d3.json('http://127.0.0.1:5000/data').then(d=>{
+d3.json('http://127.0.0.1:5000/country_emissions').then(d=>{
+d3.select("#selectcountry")
+.selectAll("option")
+.data(d.index)
+.enter()
+.append("option") 
+.attr("value", d=>d)
+.text(d=>d)  
+let trace1={
+        x:d.index,
+        y:d.data,
+        type:'bar'
+    }
+    let data = [trace1]
 
-    var data5 = [{
-        values: d.year,
-        labels: 'Year',
-        type: 'pie'
-      }];
-      
-      var layout = {
-        height: 400,
-        width: 500
-      };
-      
-      Plotly.newPlot('myDiv', data5, layout);
+    Plotly.newPlot('plot2', data)
+    d3.selectAll("#selectcountry").on("change", updatePlotly);
+    function updatePlotly() {
+        // Use D3 to select the dropdown menu
+        let dropdownMenu = d3.select("#selectcountry");
+        // Assign the value of the dropdown menu option to a variable
+        let dataset = dropdownMenu.property("value");
+        if (dataset == "global"){
+            Plotly.restyle("plot2", "x", [d.index]);
+            Plotly.restyle("plot2", "y", [d.data]); 
+        }else{let index = d.index.indexOf(dataset)
+            let x = [d.index[index]];
+            let y = [d.data[index]];
+            
+            // Note the extra brackets around 'x' and 'y'
+            Plotly.restyle("plot2", "x", [x]);
+            Plotly.restyle("plot2", "y", [y]);}
+        } 
 })
