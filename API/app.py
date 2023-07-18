@@ -86,5 +86,29 @@ def country_emissions():
     df = df.to_json(orient="split")
     return df
 
+@app.route('/industry_emissions')
+def industry_emissions(): 
+    
+    #reading SQL database, creating a pandas df for easier manipulation
+    results = pd.read_sql('select * from merged', engine)
+    results = {
+        'country': results['country'].to_list(),
+        'region': results['region'].to_list(),
+        'emissions': results['emissions'].to_list(),
+        'industry': results['industry'].to_list(),
+        'segment': results['segment'].to_list(),
+        'reason': results['reason'].to_list(),
+        'baseYear': results['base_year'].to_list(),
+        'ISO': results['iso_3166_country_code'].to_list(),
+        'Lat': results['latitude'].to_list(),
+        'Lon': results['longitude'].to_list(),
+        
+    }
+    df = pd.DataFrame(results, columns = ['region', 'country','emissions','industry','segment','reason','baseYear','ISO','Lat','Lon'])
+    #pandas df converted into json file
+    df = df.groupby("industry")["emissions"].sum()
+    df = df.to_json(orient="split")
+    return df
+
 if __name__ == '__main__':
     app.run(debug=False)

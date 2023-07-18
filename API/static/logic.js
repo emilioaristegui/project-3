@@ -73,3 +73,38 @@ let trace1={
             Plotly.restyle("plot2", "y", [y]);}
         } 
 })
+
+d3.json('http://127.0.0.1:5000/industry_emissions').then(d=>{
+d3.select("#selectindustry")
+.selectAll("option")
+.data(d.index)
+.enter()
+.append("option") 
+.attr("value", d=>d)
+.text(d=>d)  
+let trace1={
+        x:d.index,
+        y:d.data,
+        type:'bar'
+    }
+    let data = [trace1]
+
+    Plotly.newPlot('plot3', data)
+    d3.selectAll("#selectindustry").on("change", updatePlotly);
+    function updatePlotly() {
+        // Use D3 to select the dropdown menu
+        let dropdownMenu = d3.select("#selectindustry");
+        // Assign the value of the dropdown menu option to a variable
+        let dataset = dropdownMenu.property("value");
+        if (dataset == "global"){
+            Plotly.restyle("plot3", "x", [d.index]);
+            Plotly.restyle("plot3", "y", [d.data]); 
+        }else{let index = d.index.indexOf(dataset)
+            let x = [d.index[index]];
+            let y = [d.data[index]];
+            
+            // Note the extra brackets around 'x' and 'y'
+            Plotly.restyle("plot3", "x", [x]);
+            Plotly.restyle("plot3", "y", [y]);}
+        } 
+})
