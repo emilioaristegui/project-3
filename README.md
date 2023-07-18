@@ -9,8 +9,6 @@ The aim of our project is to discover which countries contribute more to global 
 - Which type causes the most pollution? 
     
 - Which segment causes the most pollution? 
-    
-- Regression analysis
 
 ## Contents
 - /API/dev/project_3.ipynb.
