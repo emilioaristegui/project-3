@@ -19,7 +19,22 @@ let trace1={
     }
     let data = [trace1]
 
-    Plotly.newPlot('plot1', data)
+    var layout = {
+        title: "CO2 Emissions by Region", 
+        yaxis: {title: "CO2 Emissions", showgrid: false},
+        font: {
+            color: "white", 
+            family: "'Courier New', Courier, monospace",
+            size: 12
+        },
+        paper_bgcolor:"rgba(0,0,0,0)",
+        plot_bgcolor:"rgba(234,247,161,0.8)",
+        marker: {
+            color: 'rgba(0,0,0,1)',
+        }
+    };
+
+    Plotly.newPlot('plot1', data, layout)
     d3.selectAll("#selectregion").on("change", updatePlotly);
     function updatePlotly() {
         // Use D3 to select the dropdown menu
@@ -53,8 +68,21 @@ let trace1={
         type:'bar'
     }
     let data = [trace1]
+    
+    var layout = {
+        title: "CO2 Emissions by Country", 
+        yaxis: {title: "CO2 Emissions", showgrid: false},
+        font: {
+            color: "white", 
+            family: "'Courier New', Courier, monospace",
+            size: 12
+        },
+        paper_bgcolor:"rgba(0,0,0,0)",
+        plot_bgcolor:"rgba(234,247,161,0.8)",
+    };
 
-    Plotly.newPlot('plot2', data)
+    Plotly.newPlot('plot2', data, layout)
+
     d3.selectAll("#selectcountry").on("change", updatePlotly);
     function updatePlotly() {
         // Use D3 to select the dropdown menu
@@ -89,7 +117,19 @@ let trace1={
     }
     let data = [trace1]
 
-    Plotly.newPlot('plot3', data)
+    var layout = {
+        title: "CO2 Emissions by Industry", 
+        yaxis: {title: "CO2 Emissions", showgrid: false},
+        font: {
+            color: "white", 
+            family: "'Courier New', Courier, monospace",
+            size: 12
+        },
+        paper_bgcolor:"rgba(0,0,0,0)",
+        plot_bgcolor:"rgba(234,247,161,0.8)",
+    };
+
+    Plotly.newPlot('plot3', data, layout)
     d3.selectAll("#selectindustry").on("change", updatePlotly);
     function updatePlotly() {
         // Use D3 to select the dropdown menu
