@@ -3,9 +3,9 @@ CO2 Emissions Around the World
 
 ## Background
 Our project aims to:
-Analyze contribution to global pollution by continents. 
-Identify the countries with the highest pollution rates.
-Determine the industries that cause the most pollution, and discover the specific segments responsible for significant pollution levels. 
+- Analyze contribution to global pollution by continents. 
+- Identify the countries with the highest pollution rates.
+- Determine the industries that cause the most pollution, and discover the specific segments responsible for significant pollution levels. 
 
 - Which continents pollute the most?
   
