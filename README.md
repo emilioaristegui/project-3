@@ -2,13 +2,16 @@
 CO2 Emissions Around the World
 
 ## Background
-Our project aims to investigate the primary contributors to global pollution by analyzing various countries, industries, and segments. We will identify the countries with the highest pollution rates, determining the types that cause the most pollution, and discover the specific segments responsible for significant pollution levels. 
+Our project aims to:
+Analyze contribution to global pollution by continents. 
+Identify the countries with the highest pollution rates.
+Determine the industries that cause the most pollution, and discover the specific segments responsible for significant pollution levels. 
 
-- Which countries pollute the most?
+- Which continents pollute the most?
   
-- Which type causes the most pollution? 
+- Which countries most pollution? 
     
-- Which segment causes the most pollution? 
+- Which industries cause the most pollution? 
 
 ## Contents
 - /API/dev/project_3.ipynb.
