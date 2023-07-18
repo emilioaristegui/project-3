@@ -2,7 +2,7 @@
 CO2 Emissions Around the World
 
 ## Background
-The aim of our project is to discover which countries contribute more to global pollution. We will analyze which industries contribute more and which segments contribute the most. Finally we will plot a regression analysis for overall global pollution for the next 5 years.
+Our project aims to investigate the primary contributors to global pollution by analyzing various countries, industries, and segments. We will identify the countries with the highest pollution rates, determining the types that cause the most pollution, and discover the specific segments responsible for significant pollution levels. 
 
 - Which countries pollute the most?
   
