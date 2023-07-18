@@ -2,8 +2,7 @@
 
 // Create the trace
 
-// Aquí estoy seguro de que algo está mal, porque se genera un bucle infinito y no carga el plot
-// hbaría que revisar si el url está bien o algo...
+// First plot
 d3.json('http://127.0.0.1:5000/data_emissions').then(d=>{
 d3.select("#selectregion")
 .selectAll("option")
